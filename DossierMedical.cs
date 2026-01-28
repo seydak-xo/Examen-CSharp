@@ -7,7 +7,6 @@ namespace ProjetC
         private string diagnostic;
         private string traitement;
 
-        
         public DossierMedical(string diagnostic, string traitement)
         {
             this.diagnostic = diagnostic;
@@ -17,13 +16,13 @@ namespace ProjetC
         public string Diagnostic
         {
             get { return diagnostic; }
-            set { diagnostic = value; }
+            private set { diagnostic = value; } 
         }
 
         public string Traitement
         {
             get { return traitement; }
-            set { traitement = value; }
+            private set { traitement = value; }
         }
 
         public void AfficherInfos()

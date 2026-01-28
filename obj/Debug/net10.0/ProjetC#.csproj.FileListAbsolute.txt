@@ -1,0 +1,15 @@
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.AssemblyInfoInputs.cache
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.AssemblyInfo.cs
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.csproj.CoreCompileInputs.cache
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.sourcelink.json
+/workspaces/Examen-CSharp/bin/Debug/net10.0/ProjetC#
+/workspaces/Examen-CSharp/bin/Debug/net10.0/ProjetC#.deps.json
+/workspaces/Examen-CSharp/bin/Debug/net10.0/ProjetC#.runtimeconfig.json
+/workspaces/Examen-CSharp/bin/Debug/net10.0/ProjetC#.dll
+/workspaces/Examen-CSharp/bin/Debug/net10.0/ProjetC#.pdb
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.dll
+/workspaces/Examen-CSharp/obj/Debug/net10.0/refint/ProjetC#.dll
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.pdb
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ProjetC#.genruntimeconfig.cache
+/workspaces/Examen-CSharp/obj/Debug/net10.0/ref/ProjetC#.dll

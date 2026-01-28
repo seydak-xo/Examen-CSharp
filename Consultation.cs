@@ -49,11 +49,11 @@ namespace ProjetC
             Console.WriteLine("═══════════════════════════════════════════════════════");
             Console.WriteLine($"Date: {dateConsultation:dd/MM/yyyy HH:mm}");
             Console.WriteLine();
-            Console.WriteLine("--- Patient ---");
+            Console.WriteLine(" Patient ");
             patient.AfficherInfos();
-            Console.WriteLine("--- Médecin ---");
+            Console.WriteLine(" Médecin");
             medecin.AfficherInfos();
-            Console.WriteLine("--- Dossier Médical ---");
+            Console.WriteLine(" Dossier Médical");
             dossierMedical.AfficherInfos();
             Console.WriteLine("═══════════════════════════════════════════════════════");
             Console.WriteLine();

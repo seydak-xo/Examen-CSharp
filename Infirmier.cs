@@ -23,7 +23,7 @@ namespace ProjetC
     
         public override void AfficherInfos()
         {
-            Console.WriteLine($"=== INFIRMIER ===");
+            Console.WriteLine($" INFIRMIER ");
             Console.WriteLine($"Nom: {Nom}");
             Console.WriteLine($"Âge: {Age} ans");
             Console.WriteLine($"Matricule professionnel: {MatriculeProfessionnel}");

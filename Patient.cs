@@ -22,7 +22,7 @@ namespace ProjetC
 
         public override void AfficherInfos()
         {
-            Console.WriteLine($"=== PATIENT ===");
+            Console.WriteLine($" PATIENT ");
             Console.WriteLine($"Nom: {nom}");
             Console.WriteLine($"Âge: {age} ans");
             Console.WriteLine($"Numéro de dossier médical: {numeroDossierMedical}");

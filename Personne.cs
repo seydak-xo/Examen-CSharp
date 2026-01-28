@@ -15,7 +15,7 @@ namespace ProjetC
             this.age = age;
         }
 
-*        public string Nom
+       public string Nom
         {
             get { return nom; }
             set { nom = value; }

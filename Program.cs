@@ -124,14 +124,14 @@ namespace ProjetC
 
         static void InitialiserDonneesExemple(List<Personne> personnes, List<DossierMedical> dossiers, List<Consultation> consultations)
         {
-            Patient patient1 = new Patient("Dupont", 45, "DOS-001");
-            Patient patient2 = new Patient("Martin", 32, "DOS-002");
+            Patient patient1 = new Patient("Ibliss Samba", 20, "DOS-001");
+            Patient patient2 = new Patient("Aziz Diop", 19, "DOS-002");
             personnes.Add(patient1);
             personnes.Add(patient2);
 
             
-            Medecin medecin1 = new Medecin("Dr. Bernard", 55, "MAT-MED-001", "Cardiologie");
-            Infirmier infirmier1 = new Infirmier("Marie", 28, "MAT-INF-001", "Urgences");
+            Medecin medecin1 = new Medecin("Dr.Seyda", 20, "MAT-MED-001", "Cardiologie");
+            Infirmier infirmier1 = new Infirmier("Aissa", 28, "MAT-INF-001", "Urgences");
             personnes.Add(medecin1);
             personnes.Add(infirmier1);
 
@@ -147,7 +147,7 @@ namespace ProjetC
       
         static void AjouterPatient(List<Personne> personnes)
         {
-            Console.WriteLine("\n--- Ajout d'un patient ---");
+            Console.WriteLine("\n Ajout d'un patient ");
             Console.Write("Nom : ");
             string nom = Console.ReadLine();
 
@@ -159,7 +159,7 @@ namespace ProjetC
 
                 Patient nouveauPatient = new Patient(nom, age, numeroDossier);
                 personnes.Add(nouveauPatient);
-                Console.WriteLine("\n✓ Patient ajouté avec succès !");
+                Console.WriteLine("\n Patient ajouté avec succès !");
             }
             else
             {
@@ -170,7 +170,7 @@ namespace ProjetC
      
         static void AjouterPersonnelMedical(List<Personne> personnes)
         {
-            Console.WriteLine("\n--- Ajout d'un membre du personnel médical ---");
+            Console.WriteLine("\nAjout d'un membre du personnel médical");
             Console.WriteLine("1. Médecin");
             Console.WriteLine("2. Infirmier");
             Console.Write("Votre choix : ");
@@ -191,7 +191,7 @@ namespace ProjetC
                     string specialite = Console.ReadLine();
                     Medecin nouveauMedecin = new Medecin(nom, age, matricule, specialite);
                     personnes.Add(nouveauMedecin);
-                    Console.WriteLine("\n✓ Médecin ajouté avec succès !");
+                    Console.WriteLine("\n Médecin ajouté avec succès !");
                 }
                 else if (type == "2")
                 {
@@ -199,7 +199,7 @@ namespace ProjetC
                     string service = Console.ReadLine();
                     Infirmier nouvelInfirmier = new Infirmier(nom, age, matricule, service);
                     personnes.Add(nouvelInfirmier);
-                    Console.WriteLine("\n✓ Infirmier ajouté avec succès !");
+                    Console.WriteLine("\n Infirmier ajouté avec succès !");
                 }
                 else
                 {
@@ -213,7 +213,7 @@ namespace ProjetC
         }
         static void CreerDossierMedical(List<DossierMedical> dossiers)
         {
-            Console.WriteLine("\n--- Création d'un dossier médical ---");
+            Console.WriteLine("\n Création d'un dossier médical");
             Console.Write("Diagnostic : ");
             string diagnostic = Console.ReadLine();
 
@@ -222,13 +222,13 @@ namespace ProjetC
 
             DossierMedical nouveauDossier = new DossierMedical(diagnostic, traitement);
             dossiers.Add(nouveauDossier);
-            Console.WriteLine("\n✓ Dossier médical créé avec succès !");
+            Console.WriteLine("\n Dossier médical créé avec succès !");
         }
 
        
         static void CreerConsultation(List<Personne> personnes, List<DossierMedical> dossiers, List<Consultation> consultations)
         {
-            Console.WriteLine("\n--- Création d'une consultation ---");
+            Console.WriteLine("\nCréation d'une consultation");
 
             List<Patient> patients = new List<Patient>();
             foreach (Personne p in personnes)
@@ -324,7 +324,7 @@ namespace ProjetC
                         );
 
                         consultations.Add(nouvelleConsultation);
-                        Console.WriteLine("\n✓ Consultation créée avec succès !");
+                        Console.WriteLine("\nConsultation créée avec succès !");
                     }
                     else
                     {
