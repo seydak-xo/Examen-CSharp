@@ -43,7 +43,8 @@ namespace ProjetC
                         bool continuerDossier = true;
                         while (continuerDossier)
                         {
-                            CreerDossierMedical(dossiersMedicaux);
+                            
+                            CreerDossierMedical(personnes, dossiersMedicaux);
                             continuerDossier = DemanderContinuerAction("créer un autre dossier médical");
                         }
                         break;
@@ -211,18 +212,40 @@ namespace ProjetC
                 Console.WriteLine("Erreur : L'âge doit être un nombre entier.");
             }
         }
-        static void CreerDossierMedical(List<DossierMedical> dossiers)
+
+        static void CreerDossierMedical(List<Personne> personnes, List<DossierMedical> dossiers)
         {
             Console.WriteLine("\n Création d'un dossier médical");
-            Console.Write("Diagnostic : ");
-            string diagnostic = Console.ReadLine();
+            Console.Write("Entrez le numéro de dossier du patient : ");
+            string idCherche = Console.ReadLine();
 
-            Console.Write("Traitement : ");
-            string traitement = Console.ReadLine();
+            Patient patientTrouve = null;
+            foreach (Personne p in personnes)
+            {
+                if (p is Patient pat && pat.NumeroDossierMedical == idCherche)
+                {
+                    patientTrouve = pat;
+                    break;
+                }
+            }
 
-            DossierMedical nouveauDossier = new DossierMedical(diagnostic, traitement);
-            dossiers.Add(nouveauDossier);
-            Console.WriteLine("\n Dossier médical créé avec succès !");
+            if (patientTrouve != null)
+            {
+                Console.WriteLine($"Patient trouvé : {patientTrouve.Nom}");
+                Console.Write("Diagnostic : ");
+                string diagnostic = Console.ReadLine();
+
+                Console.Write("Traitement : ");
+                string traitement = Console.ReadLine();
+
+                DossierMedical nouveauDossier = new DossierMedical(diagnostic, traitement);
+                dossiers.Add(nouveauDossier);
+                Console.WriteLine($"\n Dossier médical créé avec succès pour {patientTrouve.Nom} !");
+            }
+            else
+            {
+                Console.WriteLine("Erreur : Aucun patient trouvé avec cet ID.");
+            }
         }
 
        
@@ -343,41 +366,133 @@ namespace ProjetC
         }
 
             static void AfficherListePersonnes(List<Personne> personnes)
-        {
-            Console.WriteLine("\n═══════════════════════════════════════════════════════");
-            Console.WriteLine("              LISTE DES PERSONNES");
-            Console.WriteLine("═══════════════════════════════════════════════════════");
+{
+    if (personnes.Count == 0)
+    {
+        Console.WriteLine("\nAucune personne enregistrée.");
+        return;
+    }
 
-            if (personnes.Count == 0)
+    Console.WriteLine("\n═══════════════════════════════════════════════════════");
+    Console.WriteLine("           OPTIONS D'AFFICHAGE DES PERSONNES");
+    Console.WriteLine("═══════════════════════════════════════════════════════");
+    Console.WriteLine("1. Afficher les patients");
+    Console.WriteLine("2. Afficher les infirmiers");
+    Console.WriteLine("3. Afficher les médecins");
+    Console.WriteLine("4. Retour au menu principal");
+    Console.WriteLine("═══════════════════════════════════════════════════════");
+    Console.Write("Votre choix : ");
+
+    string choix = Console.ReadLine();
+    bool trouve = false;
+
+    Console.Clear();
+
+    switch (choix)
+    {
+        case "1":
+            Console.WriteLine("--- LISTE DES PATIENTS ---");
+            foreach (var p in personnes)
             {
-                Console.WriteLine("Aucune personne enregistrée.");
+                if (p is Patient) { p.AfficherInfos(); trouve = true; }
             }
-            else
+            if (!trouve) Console.WriteLine("Aucun patient enregistré.");
+            break;
+
+        case "2":
+            Console.WriteLine("--- LISTE DES INFIRMIERS ---");
+            foreach (var p in personnes)
             {
-                foreach (Personne personne in personnes)
-                {
-                    personne.AfficherInfos();
-                }
+                if (p is Infirmier) { p.AfficherInfos(); trouve = true; }
             }
-        }
+            if (!trouve) Console.WriteLine("Aucun infirmier enregistré.");
+            break;
+
+        case "3":
+            Console.WriteLine("--- LISTE DES MÉDECINS ---");
+            foreach (var p in personnes)
+            {
+                if (p is Medecin) { p.AfficherInfos(); trouve = true; }
+            }
+            if (!trouve) Console.WriteLine("Aucun médecin enregistré.");
+            break;
+
+        case "4":
+            return; 
+
+        default:
+            Console.WriteLine("Choix invalide.");
+            break;
+    }
+}
 
       
         static void AfficherConsultations(List<Consultation> consultations)
         {
-            Console.WriteLine("\n═══════════════════════════════════════════════════════");
-            Console.WriteLine("              LISTE DES CONSULTATIONS");
-            Console.WriteLine("═══════════════════════════════════════════════════════");
-
             if (consultations.Count == 0)
             {
-                Console.WriteLine("Aucune consultation enregistrée.");
+                Console.WriteLine("\n Aucune consultation enregistrée.");
+                return;
             }
-            else
+
+            Console.WriteLine("\n═══════════════════════════════════════════════════════");
+            Console.WriteLine("           OPTIONS D'AFFICHAGE DES CONSULTATIONS");
+            Console.WriteLine("═══════════════════════════════════════════════════════");
+            Console.WriteLine("1. Rechercher par nom du patient");
+            Console.WriteLine("2. Rechercher par numéro de dossier médical");
+            Console.WriteLine("3. Afficher toutes les consultations");
+            Console.WriteLine("4. Retour au menu principal");
+            Console.WriteLine("═══════════════════════════════════════════════════════");
+            Console.Write("Votre choix : ");
+            
+            string choixRecherche = Console.ReadLine();
+            bool trouve = false;
+
+            switch (choixRecherche)
             {
-                foreach (Consultation consultation in consultations)
-                {
-                    consultation.AfficherInfos();
-                }
+                case "1": 
+                    Console.Write("\nEntrez le nom du patient : ");
+                    string nomRecherche = Console.ReadLine().ToLower();
+                    Console.WriteLine("\n--- Résultats de la recherche ---");
+                    foreach (var c in consultations)
+                    {
+                        if (c.Patient.Nom.ToLower().Contains(nomRecherche))
+                        {
+                            c.AfficherInfos();
+                            trouve = true;
+                        }
+                    }
+                    if (!trouve) Console.WriteLine("Aucun patient trouvé avec ce nom.");
+                    break;
+
+                case "2": 
+                    Console.Write("\nEntrez le numéro de dossier médical : ");
+                    string numDossier = Console.ReadLine().ToLower();
+                    Console.WriteLine("\n--- Résultats de la recherche ---");
+                    foreach (var c in consultations)
+                    {
+                        if (c.Patient.NumeroDossierMedical.ToLower() == numDossier)
+                        {
+                            c.AfficherInfos();
+                            trouve = true;
+                        }
+                    }
+                    if (!trouve) Console.WriteLine("Aucun dossier correspondant trouvé.");
+                    break;
+
+                case "3": 
+                    foreach (Consultation consultation in consultations)
+                    {
+                        consultation.AfficherInfos();
+                    }
+                    break;
+
+                case "4": 
+                    return;
+
+                default:
+                    Console.WriteLine("Choix invalide.");
+                    break;
             }
         }
     }
