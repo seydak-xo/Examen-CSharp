@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/Examen-CSharp/ProjetC#.csproj": {}
+    "C:\\Users\\HP\\Documents\\DAKARTECH\\Semestre1\\C#\\C#VkSeyda\\Examen-CSharp\\ProjetC#.csproj": {}
   },
   "projects": {
-    "/workspaces/Examen-CSharp/ProjetC#.csproj": {
+    "C:\\Users\\HP\\Documents\\DAKARTECH\\Semestre1\\C#\\C#VkSeyda\\Examen-CSharp\\ProjetC#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/Examen-CSharp/ProjetC#.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Documents\\DAKARTECH\\Semestre1\\C#\\C#VkSeyda\\Examen-CSharp\\ProjetC#.csproj",
         "projectName": "ProjetC#",
-        "projectPath": "/workspaces/Examen-CSharp/ProjetC#.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/Examen-CSharp/obj/",
+        "projectPath": "C:\\Users\\HP\\Documents\\DAKARTECH\\Semestre1\\C#\\C#VkSeyda\\Examen-CSharp\\ProjetC#.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Documents\\DAKARTECH\\Semestre1\\C#\\C#VkSeyda\\Examen-CSharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

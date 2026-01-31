@@ -1,148 +1,46 @@
-# Projet C# - Gestion d'un Centre de Santé
+# Gestion d'un Centre de Santé
 
-## Description
+Projet C# - Application console pour gérer un centre de santé (patients, médecins, infirmiers, dossiers médicaux, consultations).
 
-Application console en C# permettant de gérer des informations médicales dans un centre de santé. Ce projet met en pratique les concepts fondamentaux de la Programmation Orientée Objet (POO) :
-- Abstraction
-- Héritage
-- Polymorphisme
-- Encapsulation
-- Collaboration entre classes
+## Fichiers du projet
 
-## Structure du Projet
+- **Personne.cs** - Classe abstraite de base (nom, âge)
+- **Patient.cs** - Hérite de Personne, a un numéro de dossier
+- **PersonnelMedical.cs** - Hérite de Personne, a un matricule
+- **Medecin.cs** - Hérite de PersonnelMedical, a une spécialité
+- **Infirmier.cs** - Hérite de PersonnelMedical, a un service
+- **DossierMedical.cs** - Diagnostic et traitement
+- **Consultation.cs** - Lie un patient, un médecin et un dossier avec une date
+- **Program.cs** - Le main avec le menu
 
-Le projet est organisé en plusieurs classes :
+## Ce que fait le programme
 
-- **Personne.cs** : Classe abstraite de base représentant une personne
-- **Patient.cs** : Classe représentant un patient (hérite de Personne)
-- **PersonnelMedical.cs** : Classe représentant le personnel médical (hérite de Personne)
-- **Medecin.cs** : Classe représentant un médecin (hérite de PersonnelMedical)
-- **Infirmier.cs** : Classe représentant un infirmier (hérite de PersonnelMedical)
-- **DossierMedical.cs** : Classe représentant un dossier médical
-- **Consultation.cs** : Classe représentant une consultation médicale
-- **Program.cs** : Programme principal avec menu interactif
+Au démarrage il y a déjà des données d'exemple (2 patients, 1 médecin, 1 infirmier, 2 dossiers, 1 consultation).
 
-## Prérequis
+Le menu permet de :
+1. Ajouter des patients
+2. Ajouter des médecins ou infirmiers
+3. Créer des dossiers médicaux (en cherchant le patient par son numéro de dossier)
+4. Créer des consultations (on choisit le patient, le médecin, le dossier et la date)
+5. Afficher les personnes (avec un sous-menu pour voir patients, infirmiers ou médecins)
+6. Afficher les consultations (on peut chercher par nom de patient ou par numéro de dossier)
+7. Quitter
 
-- .NET SDK 6.0 ou supérieur
-- Un environnement de développement C# (Visual Studio, Visual Studio Code avec extension C# Dev Kit, ou éditeur de texte avec terminal)
+Après chaque ajout on peut choisir d'en ajouter un autre ou de revenir au menu.
 
-## Compilation
+## POO utilisé
 
-### Avec Visual Studio
-1. Ouvrez le fichier `ProjetC.csproj` dans Visual Studio
-2. Appuyez sur `F5` pour compiler et exécuter, ou `Ctrl+Shift+B` pour compiler uniquement
+- **Abstraction** : Personne est abstraite avec AfficherInfos() abstrait
+- **Héritage** : Patient et PersonnelMedical héritent de Personne, Medecin et Infirmier héritent de PersonnelMedical
+- **Polymorphisme** : Une `List<Personne>` pour stocker tout le monde, chaque classe a son AfficherInfos()
+- **Encapsulation** : Attributs privés, propriétés pour y accéder
+- **Collaboration** : Consultation utilise Patient, Medecin et DossierMedical
 
-### Avec Visual Studio Code
-1. Ouvrez le dossier du projet dans VS Code
-2. Ouvrez le terminal intégré (Ctrl+`)
-3. Exécutez la commande :
+## Pour lancer
+
 ```bash
 dotnet build
-```
-
-### Avec le terminal (ligne de commande)
-1. Ouvrez un terminal dans le dossier du projet
-2. Exécutez la commande :
-```bash
-dotnet build
-```
-
-## Exécution
-
-### Avec Visual Studio
-Appuyez sur `F5` ou cliquez sur le bouton "Exécuter"
-
-### Avec Visual Studio Code
-Dans le terminal intégré, exécutez :
-```bash
 dotnet run
 ```
 
-### Avec le terminal (ligne de commande)
-Dans le dossier du projet, exécutez :
-```bash
-dotnet run
-```
-
-## Utilisation du Menu
-
-Au lancement, le programme affiche un menu interactif avec les options suivantes :
-
-### 1. Ajouter un patient
-Permet d'ajouter un nouveau patient au système. Vous devrez fournir :
-- Le nom du patient
-- L'âge du patient
-- Le numéro de dossier médical
-
-### 2. Ajouter un médecin ou un infirmier
-Permet d'ajouter un membre du personnel médical. Vous devrez :
-- Choisir entre médecin ou infirmier
-- Fournir le nom, l'âge et le matricule professionnel
-- Pour un médecin : indiquer la spécialité
-- Pour un infirmier : indiquer le service
-
-### 3. Créer un dossier médical
-Permet de créer un nouveau dossier médical avec :
-- Le diagnostic
-- Le traitement prescrit
-
-### 4. Créer une consultation
-Permet de créer une consultation en associant :
-- Un patient (parmi ceux disponibles)
-- Un médecin (parmi ceux disponibles)
-- Un dossier médical (parmi ceux disponibles)
-- Une date de consultation (ou la date actuelle par défaut)
-
-### 5. Afficher la liste des personnes
-Affiche toutes les personnes enregistrées (patients, médecins, infirmiers) en utilisant le polymorphisme. Chaque type de personne affiche ses informations spécifiques.
-
-### 6. Afficher les consultations
-Affiche toutes les consultations créées avec leurs détails complets.
-
-### 7. Quitter le programme
-Termine l'application.
-
-## Données d'Exemple
-
-Le programme est initialisé avec quelques données d'exemple pour faciliter la démonstration :
-- 2 patients
-- 1 médecin et 1 infirmier
-- 2 dossiers médicaux
-- 1 consultation
-
-## Concepts POO Utilisés
-
-### Abstraction
-- La classe `Personne` est abstraite et ne peut pas être instanciée directement
-- Méthode abstraite `AfficherInfos()` qui doit être implémentée par les classes dérivées
-
-### Héritage
-- `Patient` hérite de `Personne`
-- `PersonnelMedical` hérite de `Personne`
-- `Medecin` et `Infirmier` héritent de `PersonnelMedical`
-
-### Polymorphisme
-- Utilisation de `List<Personne>` pour stocker différents types de personnes
-- Appel de `AfficherInfos()` sur chaque objet, chaque classe affichant ses informations spécifiques
-
-### Encapsulation
-- Tous les attributs sont privés (`private`)
-- Accès aux données uniquement via des propriétés (getters/setters)
-- Aucun accès direct aux attributs privés depuis l'extérieur des classes
-
-### Collaboration entre classes
-- La classe `Consultation` utilise des objets `Patient`, `Medecin` et `DossierMedical`
-- Les classes collaborent pour former un système cohérent
-
-## Notes Techniques
-
-- Le projet utilise C# 9+ avec .NET 6.0
-- Toutes les classes respectent les principes de la POO
-- Le code est commenté pour faciliter la compréhension
-- Aucune variable globale n'est utilisée (les listes sont dans la méthode Main)
-- Le menu fonctionne dans une boucle jusqu'à ce que l'utilisateur choisisse de quitter
-
-## Auteur
-
-Projet réalisé dans le cadre d'un cours de Programmation Orientée Objet en C#.
+Ou ouvrir le .sln dans Visual Studio et F5.
